@@ -5,7 +5,7 @@ import './Home.css';
 
 const movieUrl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
-const buttons = ['Top 10', 'All', 'New'];
+const buttons = ['Top10', 'All', 'New'];
 const categories = ['Category','Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi'];
 const years = ['2024', '2023', '2022', '2021', '2020'];
 
@@ -24,8 +24,8 @@ const defaultStyle = {
 const Home = () => {
     const [topMovies, setTopMovies] = useState([]);
     const [selected, setSelected] = useState(0);
-    const [categorySelected, setCategorySelected] = useState(null);
-    const [yearSelected, setYearSelected] = useState(null);
+    const [categorySelected, setCategorySelected] = useState('');
+    const [yearSelected, setYearSelected] = useState('');
 
 
 
@@ -36,14 +36,14 @@ const Home = () => {
     };
 
     useEffect(() => {
-        const topRateUrl = `${movieUrl}popular?api_key=${apiKey}`;
+        const topRateUrl = `${movieUrl}popular?${apiKey}`;
         getTopRatedMovies(topRateUrl);
     }, []);
 
     return (
         <div className="homeContainer">
             <div className="title">
-                <h1>Movie ranking</h1>
+                <h1>Movie ranking TOP 10 </h1>
             </div>
             <section className="filterContainer">
                 <div className="filter">
@@ -51,7 +51,7 @@ const Home = () => {
                     {buttons.map((btn, index) => (
                         <button
                             key={index}
-                            onClick={() => {setSelected(index); setYearSelected(null); setCategorySelected(null)}}
+                            onClick={() => {setSelected(index); setYearSelected(''); setCategorySelected('')}}
                             className={selected === index ? 'selected' : ''}
                             style={{
                                 backgroundColor:
@@ -114,15 +114,11 @@ const Home = () => {
                 )}
                 {topMovies.length > 0 &&
                     topMovies.map((movie, index) => (
-                        <>
-                            <div className="movie">
                                 <MovieCard
                                     key={movie.id}
                                     movie={movie}
                                     index={index}
                                 />
-                            </div>
-                        </>
                     ))}
             </div>
         </div>
