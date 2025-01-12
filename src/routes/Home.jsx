@@ -6,7 +6,14 @@ import './Home.css';
 const movieUrl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
 const buttons = ['Top10', 'All', 'New'];
-const categories = ['Category','Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi'];
+const categories = [
+    'Category',
+    'Action',
+    'Comedy',
+    'Drama',
+    'Horror',
+    'Sci-Fi',
+];
 const years = ['2024', '2023', '2022', '2021', '2020'];
 
 const selectedStyle = {
@@ -27,8 +34,6 @@ const Home = () => {
     const [categorySelected, setCategorySelected] = useState('');
     const [yearSelected, setYearSelected] = useState('');
 
-
-
     const getTopRatedMovies = async (url) => {
         const res = await fetch(url);
         const data = await res.json();
@@ -47,11 +52,14 @@ const Home = () => {
             </div>
             <section className="filterContainer">
                 <div className="filter">
-
                     {buttons.map((btn, index) => (
                         <button
                             key={index}
-                            onClick={() => {setSelected(index); setYearSelected(''); setCategorySelected('')}}
+                            onClick={() => {
+                                setSelected(index);
+                                setYearSelected('');
+                                setCategorySelected('');
+                            }}
                             className={selected === index ? 'selected' : ''}
                             style={{
                                 backgroundColor:
@@ -73,7 +81,9 @@ const Home = () => {
                             setYearSelected(null);
                         }}
                         style={{
-                            ...(categorySelected ? selectedStyle : defaultStyle),
+                            ...(categorySelected
+                                ? selectedStyle
+                                : defaultStyle),
                         }}
                     >
                         {categories.map((cat, index) => (
@@ -84,12 +94,12 @@ const Home = () => {
                     </select>
                 </div>
                 <div className="filterYear filter">
-
-                <select
+                    <select
                         name="year"
                         id="year"
                         value={yearSelected}
-                        onChange={(e) => {setYearSelected(e.target.value);
+                        onChange={(e) => {
+                            setYearSelected(e.target.value);
                             setSelected(null);
                             setCategorySelected(null);
                         }}
@@ -114,11 +124,7 @@ const Home = () => {
                 )}
                 {topMovies.length > 0 &&
                     topMovies.map((movie, index) => (
-                                <MovieCard
-                                    key={movie.id}
-                                    movie={movie}
-                                    index={index}
-                                />
+                        <MovieCard key={movie.id} movie={movie} index={index} />
                     ))}
             </div>
         </div>
