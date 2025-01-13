@@ -24,6 +24,9 @@ const Home = () => {
 
     return (
         <div className="homeContainer">
+            <h1>
+                Movies ranking: <span className="query">Top10</span>
+            </h1>
             <div className="moviesContainer">
                 {topMovies.length === 0 && (
                     <div className="loading...">

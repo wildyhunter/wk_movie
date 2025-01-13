@@ -6,7 +6,6 @@ import Filters from './components/Filter/Filters';
 import './App.css';
 
 function App() {
-
     return (
         <div className="App">
             <NavBar />

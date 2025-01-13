@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { FilterProvider } from './context/FilterProvider.jsx';
 
 import './index.css';
 
@@ -9,7 +10,8 @@ import ErrorPage from './routes/ErroPage/ErrorPage.jsx';
 import Movie from './routes/Movie/Movie.jsx';
 import Home from './routes/Home/Home.jsx';
 import Search from './routes/Search/Search.jsx';
-import { FilterProvider } from './context/FilterProvider.jsx';
+import AllMovies from './routes/AllMovies/AllMovies.jsx';
+import NewMovies from './routes/NewMovies/NewMovies.jsx';
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
                 path: '/search',
                 element: <Search />,
             },
+            {
+                path: '/allmovies',
+                element: <AllMovies />,
+            },
+            {
+                path: '/newmovies',
+                element: <NewMovies />,
+            }
         ],
     },
 ]);

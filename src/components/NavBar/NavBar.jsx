@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
+import { FilterContext } from '../../context/FilterContext';
+
 import './NavBar.css';
 
 const NavBar = () => {
+    const { setSelected} = useContext(FilterContext);
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
 
@@ -30,7 +33,7 @@ const NavBar = () => {
                         onChange={(e) => setSearch(e.target.value)}
                         value={search}
                     />
-                    <button type="submit">
+                    <button type="submit" onClick={() => setSelected(null)}>
                         <BiSearchAlt2 />
                     </button>
                 </form>

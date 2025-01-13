@@ -2,6 +2,7 @@ import './Filter.css';
 
 import { useContext } from 'react';
 import { FilterContext } from '../../context/FilterContext';
+import { useNavigate } from 'react-router-dom';
 
 const selectedStyle = {
     backgroundColor: '#FC6B01',
@@ -25,8 +26,24 @@ const Filter = () => {
         categorySelected,
         setCategorySelected,
         yearSelected,
-        setYearSelected
+        setYearSelected,
     } = useContext(FilterContext);
+
+    const navigate = useNavigate();
+
+    const handleButonClick = (index) => {
+        setSelected(index);
+        setCategorySelected('');
+        setYearSelected('');
+
+        if (index === 0) {
+            navigate('/');
+        } else if (index === 1) {
+            navigate('/allmovies');
+        } else if (index === 2) {
+            navigate('/newmovies');
+        }
+    };
 
     return (
         <section className="filterContainer">
@@ -35,9 +52,7 @@ const Filter = () => {
                     <button
                         key={index}
                         onClick={() => {
-                            setSelected(index);
-                            setCategorySelected('');
-                            setYearSelected('');
+                            handleButonClick(index);
                         }}
                         className={selected === index ? 'selected' : ''}
                         style={{

@@ -2,3 +2,14 @@
     max-width: 1280px;
     width: 100%;
 }
+.homeContainer h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: left;
+    margin: 12px 0 40px 0;
+}
+.query {
+    margin: 20px;
+    color: #Fc6b01;
+}
