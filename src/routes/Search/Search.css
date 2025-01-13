@@ -4,10 +4,10 @@
 }
 .searchContainer h1 {
     color: white;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 400;
     text-align: left;
-    margin: 2rem 0 1rem;
+    margin: 12px 0 40px 0;
 }
 .query {
     margin: 20px;
