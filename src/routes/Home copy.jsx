@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 import MovieCard from '../components/MovieCard.jsx';
-import useYearMovies from '../constants/YearMovies.jsx';
-
+import YearMovies from '../constants/YearMovies.jsx';
 import './Home.css';
 
 const movieUrl = import.meta.env.VITE_API_URL;
@@ -17,7 +16,7 @@ const categories = [
     'Horror',
     'Sci-Fi',
 ];
-// const years = ['2024', '2023', '2022', '2021', '2020'];
+const years = ['2024', '2023', '2022', '2021', '2020'];
 
 const selectedStyle = {
     backgroundColor: '#FC6B01',
@@ -31,12 +30,13 @@ const defaultStyle = {
     border: 'none',
 };
 
+const movieYears = YearMovies()
+
 const Home = () => {
     const [topMovies, setTopMovies] = useState([]);
     const [selected, setSelected] = useState(0);
     const [categorySelected, setCategorySelected] = useState('');
     const [yearSelected, setYearSelected] = useState('');
-    const years = useYearMovies();
 
     const getTopRatedMovies = async (url) => {
         const res = await fetch(url);
@@ -45,7 +45,7 @@ const Home = () => {
     };
 
     useEffect(() => {
-        const topRateUrl = `${movieUrl}popular?api_key=${apiKey}`;
+        const topRateUrl = `${movieUrl}popular?${apiKey}`;
         getTopRatedMovies(topRateUrl);
     }, []);
 
@@ -53,6 +53,7 @@ const Home = () => {
         <div className="homeContainer">
             <div className="title">
                 <h1>Movie ranking TOP 10 </h1>
+                
             </div>
             <section className="filterContainer">
                 <div className="filter">
