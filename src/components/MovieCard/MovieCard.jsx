@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { MovieCardPrototypes } from './propTypes/ProptypesMovieCard';
-import LanguageFlag from './LanguageFlag';
-import RatingStars from './ratingStars';
+import { MovieCardPrototypes } from '../../propTypes/ProptypesMovieCard';
+import LanguageFlag from '../../Utils/LanguageFlag';
+import RatingStars from '../RatingStars/RatingStars';
 
 import PropTypes from 'prop-types';
 import './MovieCard.css';
@@ -43,9 +43,13 @@ const MovieCard = ({ movie, index, showLink = true }) => {
                 </div>
                 <div className="containerAvaliation">
                     <div className="avaliation">
-                        <p>{avarage}/10</p></div>
+                        <p>{avarage}/10</p>
+                    </div>
                     <div>
-                        <RatingStars rating={movie.vote_average} className="stars"/>
+                        <RatingStars
+                            rating={movie.vote_average}
+                            className="stars"
+                        />
                     </div>
                 </div>
             </div>

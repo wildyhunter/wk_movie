@@ -1,11 +1,16 @@
+import { Outlet } from 'react-router-dom';
+
+import NavBar from './components/NavBar/NavBar';
+import Filters from './components/Filter/Filters';
+
 import './App.css';
-import {Outlet } from 'react-router-dom';
-import NavBar from './components/NavBar';
 
 function App() {
+
     return (
         <div className="App">
             <NavBar />
+            <Filters />
             <Outlet />
         </div>
     );

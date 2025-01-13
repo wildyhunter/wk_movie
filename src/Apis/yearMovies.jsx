@@ -22,8 +22,6 @@ const useYearMovies = () => {
         getYearMovies(moviesUrl);
       }, []);
 
-      console.log(years);
-
     return years;
 };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import MovieCard from '../components/MovieCard';
+import MovieCard from '../../components/MovieCard/MovieCard';
 import './Search.css';
 
 const searchUrl = import.meta.env.VITE_SEARCH;
@@ -19,12 +19,10 @@ const Search = () => {
     };
 
     useEffect(() => {
-        const searchUrlWhithQuery = `${searchUrl}?${apiKey}&query=${query}`;
+        const searchUrlWhithQuery = `${searchUrl}?api_key=${apiKey}&query=${query}`;
         getSearchMovies(searchUrlWhithQuery);
     }, [query]);
 
-    console.log(movies);
-    
     return (
         <div className="searchContainer">
             <h1>

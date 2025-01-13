@@ -1,6 +1,7 @@
 import './Filter.css';
-import React from 'react';
-import { useState } from 'react';
+
+import { useContext } from 'react';
+import { FilterContext } from '../../context/FilterContext';
 
 const selectedStyle = {
     backgroundColor: '#FC6B01',
@@ -14,17 +15,18 @@ const defaultStyle = {
     border: 'none',
 };
 
-const Filter = ({
-    buttons,
-    categories,
-    years,
-    selected,
-    setSelected,
-    categorySelected,
-    setCategorySelected,
-    yearSelected,
-    setYearSelected,
-}) => {
+const Filter = () => {
+    const {
+        buttons,
+        categories,
+        years,
+        selected,
+        setSelected,
+        categorySelected,
+        setCategorySelected,
+        yearSelected,
+        setYearSelected
+    } = useContext(FilterContext);
 
     return (
         <section className="filterContainer">
