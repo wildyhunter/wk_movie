@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { FilterContext } from "./FilterContext"
+import { yearsMapping } from "../constants/yearsMapping";
 
-import useYearMovies from "../Apis/yearMovies";
+import CategoriesMovies from "../Apis/categoriesMovies";
 import PropTypes from 'prop-types';
 
 export const FilterProvider = ({children}) => {
 
     const buttons = ['Top10', 'All', 'New'];
-    const categories = ['Category', 'Action', 'Comedy', 'Drama', 'Horror', 'Sci-Fi'];
-    const years = useYearMovies();
+    const categories = ['Category',...CategoriesMovies()];
+    const years = yearsMapping();
 
     const [selected, setSelected] = useState(0);
     const [categorySelected, setCategorySelected] = useState('');
