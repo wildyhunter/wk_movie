@@ -28,13 +28,17 @@
 }
 .filter select {
     appearance: none;
-    background: url('../assets/down-arrow.svg') 
-    no-repeat right 15px center;
+    background: url('../../assets/down-arrow.svg') no-repeat right 15px center;
     background-size: 16px;
     background-color: #2c2c2c;
+    max-width: 150px;
     padding-right: 40px;
     margin: 0;
     outline: none;
+    overflow-y: auto;
+}
+.filter select::-ms-expand {
+    height: 200px;
 }
 .movie {
     display: flex;

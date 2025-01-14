@@ -18,7 +18,7 @@
 .movieCardContainer .movieCard__image {
     width: 245px;
     border-radius: 20px;
-    border: solid 2px #e2e2e2;
+    /* border: solid 2px #e2e2e2; */
 }
 .titleContainer {
     display: flex;
