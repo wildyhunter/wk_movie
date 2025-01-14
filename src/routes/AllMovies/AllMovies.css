@@ -40,6 +40,9 @@
 .pageContainer button:hover {
     color: #fc6b01;
 }
+button.active {
+    color: #fc6b01;
+}
 .buttons {
     display: flex;
     align-items: center;

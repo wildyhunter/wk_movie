@@ -41,9 +41,9 @@ const AllMovies = () => {
             </div>
             <div className="pageContainer">
                 
-                <button onClick={() => setPage(page - 1)}><AiOutlineLeft className="arrow" />Anterior</button>
+                <button onClick={() => page >= 2 && setPage(page - 1)}><AiOutlineLeft className="arrow" />Anterior</button>
                 <div className="buttons">
-                    <button onClick={() => setPage(page)}>{page }</button>
+                    <button className="active" onClick={() => setPage(page)}>{page }</button>
                     <button onClick={() => setPage(page+1)}>{page + 1}</button>
                     <button onClick={() => setPage(page+2)}>{page + 2}</button>
                     <button onClick={() => setPage(page+3)}>{page + 3}</button>
