@@ -1,0 +1,52 @@
+.searchContainer {
+    max-width: 1280px;
+    width: 100%;
+}
+.searchContainer h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: 400;
+    text-align: left;
+    margin: 12px 0 40px 0;
+}
+.query {
+    margin: 20px;
+    color: #fc6b01;
+}
+.pageContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+    gap: 20px;
+}
+.arrow {
+    color: #fc6b01;
+    font-size: 24px;
+
+}
+.pageContainer button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: .2s;
+}
+.pageContainer button:hover {
+    color: #fc6b01;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+}
+.pageContainer span {
+    color: #fc6b01;
+    font-size: 24px;
+}

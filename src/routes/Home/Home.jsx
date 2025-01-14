@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 
 import MovieCard from '../../components/MovieCard/MovieCard.jsx';
+import Loading from '../../components/Loading/Loading.jsx';
 
 import './Home.css';
 
-const movieUrl = import.meta.env.VITE_API_URL;
+const movieUrl = import.meta.env.VITE_TOP10;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
 
 const Home = () => {
@@ -29,10 +29,7 @@ const Home = () => {
             </h1>
             <div className="moviesContainer">
                 {topMovies.length === 0 && (
-                    <div className="loading...">
-                        <p>Carregando...</p>
-                        <AiOutlineLoading3Quarters />
-                    </div>
+                    <Loading />
                 )}
                 {topMovies.length > 0 &&
                     topMovies.map((movie, index) => (

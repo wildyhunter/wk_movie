@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import './Search.css';
+import Loading from '../../components/Loading/Loading';
 
 const searchUrl = import.meta.env.VITE_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
@@ -30,10 +30,7 @@ const Search = () => {
             </h1>
             <div className="moviesContainer">
                 {movies.length === 0 && (
-                    <div className="loading...">
-                        <p>Carregando...</p>
-                        <AiOutlineLoading3Quarters />
-                    </div>
+                    <Loading />
                 )}
                 {movies.length > 0 &&
                     movies.map((movie, index) => (
