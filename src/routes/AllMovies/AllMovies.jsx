@@ -37,7 +37,7 @@ const AllMovies = () => {
         const AllMovieURL = `${allURL}?api_key=${apiKey}&page=${page}&sort_by=primary_release_date.asc`;
         getAllMovies(AllMovieURL);
     }, [page]);
- console.log(movies);
+
     return (
         <div className="AllContainer">
             <h1>

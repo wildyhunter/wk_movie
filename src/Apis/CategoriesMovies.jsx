@@ -24,6 +24,7 @@ const CategoriesMovies = () => {
         getCategoriesMovies(moviesUrl);
     }, []);
 
+    console.log(categories);
     return categories;
 };
 
