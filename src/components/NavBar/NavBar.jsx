@@ -6,7 +6,7 @@ import { FilterContext } from '../../context/FilterContext';
 import './NavBar.css';
 
 const NavBar = () => {
-    const { setSelected} = useContext(FilterContext);
+    const { setSelected, setCategorySelected, setYearSelected} = useContext(FilterContext);
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ const NavBar = () => {
         <div className="navContainer">
             <div className="navBar">
                 <h2>
-                    <Link to="/">
+                    <Link to="/" onClick={() => (setSelected(0), setSearch(''), setCategorySelected(''), setYearSelected(''))}>
                         <BiCameraMovie />
                         WK Movies
                     </Link>

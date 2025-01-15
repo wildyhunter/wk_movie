@@ -21,14 +21,14 @@ const CategoriesMovies = () => {
             }
         } catch (error) {
             console.error('Erro ao buscar filmes:', error);
+            setCategories([]);
         }
     };
 
     useEffect(() => {
-        const moviesUrl = `${catUrl}list?api_key=${apiKey}&language=pt-BR`;
+        const moviesUrl = `${catUrl}/list?api_key=${apiKey}&language=pt-BR`;
         getCategoriesMovies(moviesUrl);
     }, []);
-
     return categories;
 };
 

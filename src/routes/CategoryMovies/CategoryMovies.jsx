@@ -12,17 +12,30 @@ const categoriaUrl = import.meta.env.VITE_ALL;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
 
 const CategoryMovies = () => {
+    const [idCategoria, setIdCategoria] = useState(null);
     const arrayCategoria = useParams();
     const categoria = arrayCategoria.category;
 
-    const categoryArray= CategoriesMovies()
+    const categoryArray = CategoriesMovies();
 
-    const category = categoryArray.find((item) => item.name === categoria);
-    const idCategoria = category?.id || category?.find(item => item.name === categoria)?.id;
-    console.log(idCategoria);
+    idCategoria === undefined && console.error('CATEGORIA NÃO ENCONTRADA');
 
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        if (categoryArray.length > 0 && categoria) {
+            const category = categoryArray.find(
+                (item) => item.name === categoria
+            );
+            if (category) {
+                setIdCategoria(category.id);
+            } else {
+                console.error('CATEGORIA NÃO ENCONTRADA');
+                setIdCategoria(null);
+            }
+        }
+    }, [categoria, categoryArray]);
 
     const getCategoryMovies = async (url) => {
         try {
@@ -44,12 +57,11 @@ const CategoryMovies = () => {
     };
 
     useEffect(() => {
-        const categoryUrl = `${categoriaUrl}?api_key=${apiKey}&page=${page}&with_genres=${idCategoria}&sort_by=popularity.asc`;
-
-        getCategoryMovies(categoryUrl);
+        if (idCategoria) {
+            const categoryUrl = `${categoriaUrl}?api_key=${apiKey}&page=${page}&with_genres=${idCategoria}&sort_by=popularity.asc`;
+            getCategoryMovies(categoryUrl);
+        }
     }, [categoria, idCategoria, page]);
-
-    console.log(movies);
 
     return (
         <div className="categoryContainer">
