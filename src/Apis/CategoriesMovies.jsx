@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const catUrl = import.meta.env.VITE_CAT_URL;
+const catUrl = import.meta.env.VITE_CATEGORY;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
 
 const CategoriesMovies = () => {
@@ -9,11 +9,16 @@ const CategoriesMovies = () => {
     const getCategoriesMovies = async (url) => {
         try {
             const res = await fetch(url);
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
             const data = await res.json();
-            const uniqueCategories = [
-                ...new Set(data.genres.map((category) => category.name)),
-            ];
-            setCategories(uniqueCategories);
+            if (data && Array.isArray(data.genres)) {
+                setCategories(data.genres);
+            }else {
+                console.error('Dados inválidos:', data);
+                setCategories([]);
+            }
         } catch (error) {
             console.error('Erro ao buscar filmes:', error);
         }
@@ -24,7 +29,6 @@ const CategoriesMovies = () => {
         getCategoriesMovies(moviesUrl);
     }, []);
 
-    console.log(categories);
     return categories;
 };
 

@@ -1,20 +1,25 @@
 import { useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
 import MovieCard from '../../components/MovieCard/MovieCard';
 import Loading from '../../components/Loading/Loading';
-import CategoriesMovies from '../../Apis/categoriesMovies';
+import CategoriesMovies from '../../Apis/CategoriesMovies';
 
 import './CategoryMovies.css';
 
-const categoriaUrl = import.meta.env.VITE_CATEGORY;
+const categoriaUrl = import.meta.env.VITE_ALL;
 const apiKey = import.meta.env.VITE_API_KEY || 'API_KEY_NÃO_CARREGADA';
 
 const CategoryMovies = () => {
-    const categoryId = CategoriesMovies();
     const arrayCategoria = useParams();
-    const categoria = arrayCategoria.categoria;
+    const categoria = arrayCategoria.category;
+
+    const categoryArray= CategoriesMovies()
+
+    const category = categoryArray.find((item) => item.name === categoria);
+    const idCategoria = category?.id || category?.find(item => item.name === categoria)?.id;
+    console.log(idCategoria);
 
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
@@ -39,10 +44,13 @@ const CategoryMovies = () => {
     };
 
     useEffect(() => {
-        const categoryUrl = `${categoriaUrl}?api_key=${apiKey}&page=${page}&with_genres=28&sort_by=popularity.asc`;
+        const categoryUrl = `${categoriaUrl}?api_key=${apiKey}&page=${page}&with_genres=${idCategoria}&sort_by=popularity.asc`;
+
         getCategoryMovies(categoryUrl);
-    }, [categoria, page]);
-console.log(movies);
+    }, [categoria, idCategoria, page]);
+
+    console.log(movies);
+
     return (
         <div className="categoryContainer">
             <h1>

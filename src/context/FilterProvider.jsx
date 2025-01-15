@@ -1,20 +1,22 @@
-import { useState } from "react"
-import { FilterContext } from "./FilterContext"
-import { yearsMapping } from "../constants/yearsMapping";
+import { useState } from 'react';
+import { FilterContext } from './FilterContext';
+import { yearsMapping } from '../constants/yearsMapping';
+import CategoriesMovies from '../Apis/CategoriesMovies';
 
-import CategoriesMovies from "../Apis/categoriesMovies";
 import PropTypes from 'prop-types';
 
-export const FilterProvider = ({children}) => {
-
+export const FilterProvider = ({ children }) => {
     const buttons = ['Top10', 'All', 'New'];
-    const categories = ['Category',...CategoriesMovies()];
+    const categories = [
+        'Category',
+        ...CategoriesMovies().map((category) => category.name),
+    ];
     const years = yearsMapping();
 
     const [selected, setSelected] = useState(0);
     const [categorySelected, setCategorySelected] = useState('');
     const [yearSelected, setYearSelected] = useState('');
-
+ 
     return (
         <FilterContext.Provider
             value={{
@@ -26,7 +28,7 @@ export const FilterProvider = ({children}) => {
                 categorySelected,
                 setCategorySelected,
                 yearSelected,
-                setYearSelected
+                setYearSelected,
             }}
         >
             {children}
