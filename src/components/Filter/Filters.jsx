@@ -3,6 +3,8 @@ import './Filter.css';
 import { useContext } from 'react';
 import { FilterContext } from '../../context/FilterContext';
 import { useNavigate } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const selectedStyle = {
     backgroundColor: '#FC6B01',
@@ -30,7 +32,22 @@ const Filter = () => {
     } = useContext(FilterContext);
 
     const navigate = useNavigate();
+    const { category } = useParams();
+    const { yearsmovies } = useParams();
+    const location = useLocation();
 
+    useEffect(() => {
+        if (location.pathname.startsWith('/category/')) {
+            setCategorySelected(category);
+        }
+    }, [category, location.pathname, setCategorySelected]);
+
+    useEffect(() => {
+        if (location.pathname.startsWith('/yearmovies/')) {
+            setYearSelected(yearsmovies);
+        }
+    }, [yearsmovies, location.pathname, setYearSelected, years]);
+    
     const handleButonClick = (index) => {
         setSelected(index);
         setCategorySelected('');
@@ -43,6 +60,20 @@ const Filter = () => {
         } else if (index === 2) {
             navigate('/newmovies');
         }
+    };
+
+    const handleCategoryChange = (e) => {
+        setCategorySelected(e.target.value);
+        setSelected('');
+        setYearSelected('');
+        navigate(`/category/${e.target.value}`);
+    };
+
+    const handleYearChange = (e) => {
+        setYearSelected(e.target.value);
+        setSelected('');
+        setCategorySelected('');
+        navigate(`/yearsmovies/${e.target.value}`);
     };
 
     return (
@@ -70,9 +101,7 @@ const Filter = () => {
                     id="category"
                     value={categorySelected}
                     onChange={(e) => {
-                        setCategorySelected(e.target.value);
-                        setSelected(null);
-                        setYearSelected(null);
+                        handleCategoryChange(e);
                     }}
                     style={categorySelected ? selectedStyle : defaultStyle}
                 >
@@ -90,9 +119,7 @@ const Filter = () => {
                     id="year"
                     value={yearSelected}
                     onChange={(e) => {
-                        setYearSelected(e.target.value);
-                        setSelected(null);
-                        setCategorySelected(null);
+                        handleYearChange(e);
                     }}
                     style={yearSelected ? selectedStyle : defaultStyle}
                 >

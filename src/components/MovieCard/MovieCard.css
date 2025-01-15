@@ -1,5 +1,5 @@
 .movieCardContainer {
-    max-width: 1440px;
+    max-width: 1280px;
     width: 100%;
     display: flex;
     gap: 1rem;
@@ -14,6 +14,9 @@
     position: absolute;
     left: -120px;
     height: 100%;
+}
+.movieCardContainer .img {
+    min-width: 245px;
 }
 .movieCardContainer .movieCard__image {
     width: 245px;
@@ -33,15 +36,17 @@
     text-overflow: ellipsis;
     max-width: 600px;
 }
-.infoContainer {
-    display: flex;
-    padding: 16px 0 0 16px;
-}
 .info {
     display: flex;
     flex-direction: column;
 }
-
+.infoContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0 0 16px;
+    background-color: rgba(255, 255, 255, 0.137);
+    width: 100%;
+}
 .titleContainer h2 {
     font-size: 48px;
     padding: 0;

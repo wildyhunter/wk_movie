@@ -15,11 +15,13 @@ const MovieCard = ({ movie, index, showLink = true }) => {
     return (
         <div className="movieCardContainer">
             <h1 className="index">{(index + 1).toString()}</h1>
-            <img
-                src={imageUrl + movie.poster_path}
-                alt={movie.title}
-                className="movieCard__image"
-            />
+            <div className="img">
+                <img
+                    src={imageUrl + movie.poster_path}
+                    alt={movie.title}
+                    className="movieCard__image"
+                />
+            </div>
             <div className="infoContainer">
                 <div className="info">
                     <div className="titleContainer">

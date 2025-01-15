@@ -12,9 +12,23 @@ const Home = () => {
     const [topMovies, setTopMovies] = useState([]);
 
     const getTopRatedMovies = async (url) => {
-        const res = await fetch(url);
-        const data = await res.json();
-        setTopMovies(data.results.slice(0, 10));
+        try {
+            const res = await fetch(url);
+
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await res.json();
+            if(data && Array.isArray(data.results)) {
+                setTopMovies(data.results.slice(0, 10));
+            
+            } else {
+                console.error('Dados inválidos:', data);
+                setTopMovies([]);
+            }
+        } catch (error) {
+            console.error('Erro ao buscar filmes:', error);
+        }
     };
 
     useEffect(() => {

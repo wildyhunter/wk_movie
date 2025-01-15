@@ -12,8 +12,13 @@ import Home from './routes/Home/Home.jsx';
 import Search from './routes/Search/Search.jsx';
 import AllMovies from './routes/AllMovies/AllMovies.jsx';
 import NewMovies from './routes/NewMovies/NewMovies.jsx';
+import CategoryMovies from './routes/CategoryMovies/CategoryMovies.jsx';
+import YearsMovies from './routes/YearsMovies/YearsMovies.jsx';
 
-const router = createBrowserRouter([
+
+
+
+const router = createBrowserRouter([    
     {
         path: '/',
         element: <App />,
@@ -38,6 +43,14 @@ const router = createBrowserRouter([
             {
                 path: '/newmovies',
                 element: <NewMovies />,
+            },
+            {
+                path: '/category/:category',
+                element: <CategoryMovies />,
+            },
+            {
+                path: '/yearsmovies/:year',
+                element: <YearsMovies />,
             }
         ],
     },
