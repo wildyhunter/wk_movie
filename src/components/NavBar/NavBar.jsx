@@ -22,8 +22,7 @@ const NavBar = () => {
             <div className="navBar">
                 <h2>
                     <Link to="/" onClick={() => (setSelected(0), setSearch(''), setCategorySelected(''), setYearSelected(''))}>
-                        <BiCameraMovie />
-                        WK Movies
+                        <img id="logo" src="src\assets\logo.svg" alt="" />
                     </Link>
                 </h2>
                 <form onSubmit={handleSubmit}>

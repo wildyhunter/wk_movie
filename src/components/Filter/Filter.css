@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 2rem 0;
+    margin-top: 150px;
     max-width: 1280px;
     width: 100%;
 }
@@ -22,6 +23,7 @@
     font-size: 20px;
     border-radius: 25px;
     background-color: #2c2c2c;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.685);
     color: white;
     border: none;
     transition: all 0.1s ease-in-out;

@@ -7,6 +7,11 @@
 
 body {
   background-color: #171717;
+  background-image: url("./assets/background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   color: white;
   overflow-y: scroll
 }
