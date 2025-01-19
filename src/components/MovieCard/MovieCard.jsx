@@ -1,13 +1,21 @@
 import { Link } from 'react-router-dom';
 import { MovieCardPrototypes } from '../../propTypes/ProptypesMovieCard';
+import { useContext } from 'react';
+
+
 import LanguageFlag from '../../Utils/LanguageFlag';
 import RatingStars from '../RatingStars/RatingStars';
-
 import PropTypes from 'prop-types';
+import { FilterContext } from '../../context/FilterContext';
+
 import './MovieCard.css';
 
 const imageUrl = import.meta.env.VITE_IMG;
+
 const MovieCard = ({ movie, index, showLink = true }) => {
+    const {
+        setSelected,setCategorySelected,setYearSelected} = useContext(FilterContext);
+        
     const year = movie.release_date.split('-')[0];
     const language = movie.original_language;
     const avarage = movie.vote_average.toFixed(1);
@@ -39,7 +47,7 @@ const MovieCard = ({ movie, index, showLink = true }) => {
                     </div>
                     <div className="details">
                         {showLink && (
-                            <Link to={`/movie/${movie.id}`}>Detalhes</Link>
+                            <Link to={`/movie/${movie.id}`} onClick={() => (setSelected(''),setCategorySelected(''),setYearSelected(''))}>Detalhes</Link>
                         )}
                     </div>
                 </div>

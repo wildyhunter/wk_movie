@@ -1,18 +1,19 @@
 import { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { BiCameraMovie, BiSearchAlt2 } from 'react-icons/bi';
+import { BiSearchAlt2 } from 'react-icons/bi';
 import { FilterContext } from '../../context/FilterContext';
 
 import './NavBar.css';
 
 const NavBar = () => {
-    const { setSelected, setCategorySelected, setYearSelected} = useContext(FilterContext);
+    const { setSelected, setCategorySelected, setYearSelected } =
+        useContext(FilterContext);
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!search) return;
+        if (!search) return;
         navigate(`/search?q=${search}`);
         setSearch('');
     };
@@ -21,7 +22,15 @@ const NavBar = () => {
         <div className="navContainer">
             <div className="navBar">
                 <h2>
-                    <Link to="/" onClick={() => (setSelected(0), setSearch(''), setCategorySelected(''), setYearSelected(''))}>
+                    <Link
+                        to="/"
+                        onClick={() => (
+                            setSelected(0),
+                            setSearch(''),
+                            setCategorySelected(''),
+                            setYearSelected('')
+                        )}
+                    >
                         <img id="logo" src="src\assets\logo.svg" alt="" />
                     </Link>
                 </h2>
