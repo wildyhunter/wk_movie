@@ -11,6 +11,9 @@ function App() {
             <NavBar />
             <Filters />
             <Outlet />
+            <footer className="footerContainer">
+                <p>WildyDev © 2024 - Todos os direitos reservados</p>
+            </footer>
         </div>
     );
 }
